@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0A0A0A" />
+<title>Rotina.OS</title>
+<link rel="manifest" href="./manifest.json" />
+<link rel="icon" href="./icon-192.png" />
+<link rel="apple-touch-icon" href="./icon-192.png" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap');
+  html, body { margin: 0; padding: 0; background: #0A0A0A; }
+  * { box-sizing: border-box; }
+  .rt-scroll::-webkit-scrollbar { width: 6px; }
+  .rt-scroll::-webkit-scrollbar-thumb { background: #F5C400; border-radius: 3px; }
+  .rt-btn { transition: transform .12s ease, background .12s ease; }
+  .rt-btn:active { transform: scale(0.96); }
+  @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+  @keyframes flash-bg { 0% { background: #F5C400; } 100% { background: transparent; } }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
