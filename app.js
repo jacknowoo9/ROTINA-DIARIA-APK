@@ -26,7 +26,6 @@ const { useState, useEffect, useRef, useCallback } = React;
 
 const CATEGORIES = {
   Leitura: { color: "#7FE0C1", dim: "#0f3d31" },
-  Ligacoes: { color: "#FF9F4A", dim: "#3d2308" },
   Vendas: { color: "#F5C400", dim: "#4a3f00" },
   Estudo: { color: "#5FB8FF", dim: "#0a2c4a" },
   Trabalho: { color: "#FFE066", dim: "#3f3900" },
@@ -36,7 +35,7 @@ const CATEGORIES = {
 };
 const CAT_KEYS = Object.keys(CATEGORIES);
 const CAT_LABEL = {
-  Leitura: "Leitura", Ligacoes: "Ligações a leads", Vendas: "Vendas",
+  Leitura: "Leitura", Vendas: "Vendas",
   Estudo: "Aulas / Estudo", Trabalho: "Trabalho", DesenvPessoal: "Desenv. pessoal",
   Saude: "Saúde", Descanso: "Descanso",
 };
@@ -62,20 +61,21 @@ function fmtDur(min) {
 function uid() { return Math.random().toString(36).slice(2, 10); }
 
 const DEFAULT_TEMPLATE = [
-  { start: "07:00", end: "07:15", activity: "Acordar + rotina matinal", category: "Saude" },
-  { start: "07:15", end: "08:00", activity: "Leitura", category: "Leitura" },
-  { start: "08:00", end: "08:30", activity: "Pequeno-almoço + plano do dia", category: "Trabalho" },
-  { start: "08:30", end: "10:00", activity: "Ligações a leads / follow-up WhatsApp", category: "Ligacoes" },
-  { start: "10:00", end: "12:30", activity: "Bloco de vendas — criativos, ads, funis", category: "Vendas" },
-  { start: "12:30", end: "13:30", activity: "Almoço", category: "Descanso" },
-  { start: "13:30", end: "15:00", activity: "Aulas / estudo (copy, tráfego, automação)", category: "Estudo" },
-  { start: "15:00", end: "17:30", activity: "Execução — automação, entrega, otimização", category: "Trabalho" },
-  { start: "17:30", end: "18:30", activity: "Ligações a leads — 2ª ronda", category: "Ligacoes" },
-  { start: "18:30", end: "19:30", activity: "Desenvolvimento pessoal / exercício", category: "DesenvPessoal" },
-  { start: "19:30", end: "20:30", activity: "Jantar", category: "Descanso" },
-  { start: "20:30", end: "21:30", activity: "Leitura", category: "Leitura" },
-  { start: "21:30", end: "22:15", activity: "Revisão do dia + plano de amanhã", category: "Trabalho" },
-  { start: "23:00", end: "23:15", activity: "Dormir", category: "Descanso" },
+  { start: "00:00", end: "03:00", activity: "Operação noturna — vendas / otimização de campanhas", category: "Vendas" },
+  { start: "03:00", end: "07:30", activity: "Dormir", category: "Descanso" },
+  { start: "07:30", end: "07:45", activity: "Acordar + rotina matinal", category: "Saude" },
+  { start: "07:45", end: "08:30", activity: "Leitura", category: "Leitura" },
+  { start: "08:30", end: "09:00", activity: "Pequeno-almoço + plano do dia", category: "Trabalho" },
+  { start: "09:00", end: "11:00", activity: "Minerar ofertas / pesquisa de criativos e concorrência", category: "Vendas" },
+  { start: "11:00", end: "13:00", activity: "Bloco de vendas — criativos, ads, funis", category: "Vendas" },
+  { start: "13:00", end: "13:30", activity: "Almoço", category: "Descanso" },
+  { start: "13:30", end: "15:30", activity: "Soneca — janela de baixa conversão", category: "Descanso" },
+  { start: "15:30", end: "18:00", activity: "Execução — automação, entrega, otimização", category: "Trabalho" },
+  { start: "18:00", end: "19:00", activity: "Estudo — copy, tráfego, automação", category: "Estudo" },
+  { start: "19:00", end: "20:00", activity: "Desenvolvimento pessoal / exercício", category: "DesenvPessoal" },
+  { start: "20:00", end: "21:00", activity: "Jantar", category: "Descanso" },
+  { start: "21:00", end: "22:00", activity: "Leitura", category: "Leitura" },
+  { start: "22:00", end: "24:00", activity: "Operação noturna — vendas / otimização de campanhas", category: "Vendas" },
 ];
 
 function withIds(list) { return list.map((b) => ({ id: uid(), status: "pending", ...b })); }
